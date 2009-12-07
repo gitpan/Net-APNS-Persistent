@@ -5,7 +5,7 @@ use 5.008;
 use strict;
 use warnings;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use base 'Net::APNS::Persistent::Base';
 
@@ -208,7 +208,7 @@ sub _pack_payload_for_devicetoken {
     }
 
     return pack(
-        'c n/a n/a',
+        'c n/a* n/a*',
         $self->command,
         pack( 'H*', $devicetoken ),
         $json
@@ -297,12 +297,15 @@ isn't necessary as this will happen implicitly when the object is destroyed.
 
 =over 4
 
+=item Presentation on this module by Author
+
+L<http://mark.aufflick.com/talks/apns>
+
 =item Apple Push Notification Service Programming Guide
 
 L<http://developer.apple.com/IPhone/library/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Introduction/Introduction.html>
 
 =item L<Net::APNS::Feedback>
-
 
 =item GIT Source Repository for this module
 
